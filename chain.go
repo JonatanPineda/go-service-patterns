@@ -5,7 +5,7 @@ import "net/http"
 type MiddlewareFunc func(next http.HandlerFunc) http.HandlerFunc
 
 func chain(chain ...MiddlewareFunc) http.HandlerFunc {
-	return http.HandlerFunc(recurseChain(chain))
+	return recurseChain(chain)
 }
 
 func recurseChain(chain []MiddlewareFunc) http.HandlerFunc {
